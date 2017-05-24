@@ -34,8 +34,22 @@
                 <input id="user-age" type="text" class="validate">
                 <label for="user-age">Возраст</label>
             </div>
+            <div class="col s12">Вопросы:</div>
             <div class="input-field col s12">
-                <a class="waves-effect waves-light btn"><i class="material-icons right">poll</i>Отправить</a>
+                <input id="q1" type="text" class="validate">
+                <label for="q1">question1</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="q2" type="text" class="validate">
+                <label for="q2">question2</label>
+            </div>
+            <div class="input-field col s12">
+                <a id="send-answer" class="waves-effect waves-light btn"><i class="material-icons right">poll</i>Отправить</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <p id="server-answer"></p>
             </div>
         </div>
     </div>

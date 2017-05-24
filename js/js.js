@@ -1,5 +1,6 @@
 $(document).ready(function () {
         $('#send-answer').on('click', myQuiz);
+        $('footer').load('footer.html');
 });
 
 function myQuiz() {
@@ -24,3 +25,6 @@ function ifSuccess(data) {
     $('#server-answer').html(data);
 }
 
+$.getJSON('prim.json',function (data) {
+    console.log(data);
+})

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1></h1>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        myAjax();
+    });
+
+    function myAjax() {
+        $.post(
+            //куда
+//            'rand.php',
+            'a1.php',
+            //что
+            {
+//                'min':0,
+//                'max':10
+                'num1':0,
+                'num2':10
+            },
+            //и что потом
+            ifSuccess
+        );
+    }
+
+    function ifSuccess(data) {
+        //все данные от сервера передаются в dиде строки в переменную data
+        $('h1').html(data);
+    }
+</script>
+</body>
+</html>

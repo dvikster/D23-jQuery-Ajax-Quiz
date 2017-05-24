@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Materialize framework</title>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
+    <link rel="stylesheet" href="css/css.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <p class="input-field col s12">
+            <form action="#">
+                <p>Ваш пол</p>
+                <p>
+                    <input name="sex" type="radio" id="man" value="man"/>
+                    <label for="man">Man</label>
+                </p>
+                <p>
+                    <input name="sex" type="radio" id="woman" value="woman"/>
+                    <label for="woman">Woman</label>
+                </p>
+                <p>Ваш рост</p>
+
+                <p class="range-field">
+                    <input type="range" id="height" min="110" max="250" value="0" />
+                </p>
+
+
+                <p class="input-field ">
+                    <a id="ideal-weight" class="waves-effect waves-light btn"><i class="material-icons right">poll</i>узнать идеальній вес</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="input-field col s12">
+            <p class="ideal"></p>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="js/materialize.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#ideal-weight').on('click', myAjax);
+
+    });
+
+    function myAjax() {
+        $.post(
+            //куда
+            'a3.php',
+            //что
+            {
+                'sex': $( 'input[type=radio]:checked' ).val(),
+                'height':$('input[type=range]').val()
+            },
+            //и что потом
+            ifSuccess
+        );
+    }
+
+    function ifSuccess(data) {
+        //все данные от сервера передаются в dиде строки в переменную data
+        $('p.ideal').html(data);
+    }
+</script>
+</body>
+</html>

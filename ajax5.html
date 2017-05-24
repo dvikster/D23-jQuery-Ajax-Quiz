@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Materialize framework</title>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
+    <link rel="stylesheet" href="css/css.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+       <form action="#" class="col s12">
+            <p class="input-field">
+                <input id="user-name" type="text" class="validate">
+                <label for="user-name">Ваше имя и фамилия</label>
+            </p>
+           <p class="input-field">
+               <input id="user-email" type="text" class="validate">
+               <label for="user-email">Ваш email</label>
+           </p>
+           <p class="input-field">
+               <input id="user-phone" type="text" class="validate">
+               <label for="user-phone">Ваш телефон</label>
+           </p>
+            <p class="input-field ">
+                <a id="send-mail" class="waves-effect waves-light btn"><i class="material-icons right">poll</i>Отправить</a>
+            </p>
+        </form>
+    </div>
+</div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="input-field col s12">
+            <p class="mail"></p>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="js/materialize.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#send-mail').on('click', myAjax);
+    });
+
+
+    function myAjax() {
+//        console.log($('#user-name').val());
+//        console.log($('#user-email').val());
+//        console.log($('#user-phone').val());
+
+        $.post(
+            //куда
+            'mail.php',
+            //что
+            {
+               'fio': $('#user-name').val(),
+               'email': $('#user-email').val(),
+               'phone': $('#user-phone').val()
+            },
+            //и что потом
+            ifSuccess
+        );
+    }
+
+    function ifSuccess(data) {
+        //все данные от сервера передаются в dиде строки в переменную data
+        $('p.mail').html(data);
+    }
+</script>
+</body>
+</html>
